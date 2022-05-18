@@ -24,7 +24,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: current
+      - name: npm init
+        run: |
+          npm init
+          npm install jasmine
+          npx jasmine init
+          npm jasmine
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
